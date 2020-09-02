@@ -1,13 +1,21 @@
-interface IMoklet { 
-  a: String,
-  b: Number,
-  c: [String]
-}
-const a: string = "Arie";
-let c: string[] = ["Arie", "Jack"];
+import { Kernel } from "./core/kernel/kernel";
+import { IController } from './core/shared/IController';
 
-function someFunction(params1: number, params2: number) { 
-  console.log("Somefunction called")
-  return params1 + params2;
+export class App {
+  _kernel: Kernel
+  
+  constructor(_c: IController[]) { 
+    this._kernel = new Kernel();
+    this.initController(_c);
+  }
+
+  private initController(_c: IController[]) { 
+    _c.forEach((controller) => { 
+      this._kernel._defaultApps.use('/api/v1/', controller.router);
+    })
+  }
+
+  listen() { 
+    this._kernel.appService();
+  }
 }
-someFunction(1,2);
