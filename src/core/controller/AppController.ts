@@ -5,7 +5,7 @@ import { AppWorker } from '../worker/AppWorker';
 export class AppController implements IController { 
   path = '/app'
   router = express.Router();
-  _worker?:AppWorker
+  _worker:AppWorker
   constructor() { 
     this._worker =  new AppWorker()
     this.initRouter();

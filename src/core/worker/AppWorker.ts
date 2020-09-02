@@ -5,11 +5,12 @@ interface IAppWorker {
 
 export class AppWorker implements IAppWorker {
   _hello:HelloWorker
+  
   constructor() { 
     this._hello = new HelloWorker();
   }
   ping(): string {
-    return this._hello.hello();
+    return this._hello.hello() as string;
   } 
 
 }
