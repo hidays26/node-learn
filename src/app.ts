@@ -1,5 +1,6 @@
 import { Kernel } from "./core/kernel/kernel";
 import { IController } from './core/shared/IController';
+import basicAuth from "./core/util/basicAuth";
 
 export class App {
   _kernel: Kernel
